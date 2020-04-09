@@ -1,0 +1,16 @@
+<resources>
+
+
+    <string name="hello_blank_fragment">This is the main fragment</string>
+    <string name="app_name">promod20</string>
+    <string name="title_home">Home</string>
+    <string name="title_country">Country</string>
+
+    <array name="menuOptions">
+        <item>Home</item>
+        <item>Personal</item>
+        <item>High scores</item>
+        <item>Settings</item>
+        <item>About</item>
+    </array>
+</resources>

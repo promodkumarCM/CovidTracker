@@ -1,0 +1,38 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+
+<style name="BottomNavigationView">
+    <item name="fontFamily">@color/colorPrimary</item>
+    <item name="android:textSize">10sp</item>
+    <item name="android:textColor">#fff</item>
+</style>
+
+<style name="LabelFontStyle" >
+    <item name="fontFamily">sans-serif-medium/</item>
+    <item name="android:textSize">14sp</item>
+</style>
+
+<style name="TotalFontStyle" >
+    <item name="fontFamily">sans-serif-condensed</item>
+    <item name="android:textSize">36sp</item>
+</style>
+
+
+
+</resources>
+
