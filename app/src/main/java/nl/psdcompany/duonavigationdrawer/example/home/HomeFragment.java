@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -41,6 +42,8 @@ public class HomeFragment extends Fragment {
         tvTotalRecovered = root.findViewById(R.id.tvTotalRecovered);
         tvLastUpdated = root.findViewById(R.id.tvLastUpdated);
         progressBar = root.findViewById(R.id.progress_circular_home);
+        WebView myWebView = (WebView) root.findViewById(R.id.home_webView);
+        myWebView.loadUrl("https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public");
 
         // call Volley
         getData();
