@@ -2,31 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/bottom_sheet"
+    android:id="@+id/bottom_sheet1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#ffffff"
+    android:background="@drawable/rounded_rect_white"
     android:orientation="vertical"
     android:padding="12dp"
     app:behavior_hideable="false"
     app:behavior_peekHeight="100dp"
-    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    android:elevation="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="96dp"
         android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="84dp"
-            android:layout_height="match_parent"
-            android:padding="8dp"
-            android:src="@drawable/ic_dashboard_black_24dp" />
-
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="5"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
@@ -50,16 +45,31 @@
                     tools:text="WORLD HEALTH ORGANIZATION"/>
 
                 <TextView
-                    android:gravity="center"
-                    android:layout_gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="DATA LOADING FROM WHO" />
+                    android:text="DATA LOADING FROM WHO WEBSITE" />
 
 
             </LinearLayout>
 
         </LinearLayout>
+
+        <RelativeLayout
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_openSheet"
+                app:fabSize="normal"
+                android:src="@drawable/ic_up_arrow_lg"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+
 
     </LinearLayout>
 

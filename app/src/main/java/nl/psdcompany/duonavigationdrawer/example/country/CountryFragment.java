@@ -9,6 +9,13 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -21,22 +28,16 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import nl.psdcompany.duonavigationdrawer.example.R;
 
-public class CountryFragment extends Fragment implements OnRvClick{
+public class CountryFragment extends Fragment implements OnRvClick {
 
     RecyclerView rvCovidCountry;
     ProgressBar progressBar;
     TextView tvTotalCountry;
 
     private static final String TAG = CountryFragment.class.getSimpleName();
-    ArrayList<CovidCountry> covidCountries;
+    ArrayList<CountryApiModel> covidCountries;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -65,18 +66,18 @@ public class CountryFragment extends Fragment implements OnRvClick{
     }
 
     private void showRecyclerView() {
-        CovidCountryAdapter covidCountryAdapter = new CovidCountryAdapter(covidCountries,this,getActivity());
+        CovidCountryAdapter covidCountryAdapter = new CovidCountryAdapter(covidCountries, this, getActivity());
         rvCovidCountry.setAdapter(covidCountryAdapter);
     }
 
-    private void showSelectedCovidCountry(CovidCountry covidCountry){
+    private void showSelectedCovidCountry(CountryApiModel covidCountry) {
         Intent covidCovidCountryDetail = new Intent(getActivity(), CovidCountryDetail.class);
         covidCovidCountryDetail.putExtra("EXTRA_COVID", covidCountry);
         startActivity(covidCovidCountryDetail);
     }
 
     private void getDataFromServer() {
-        String url = "https://corona.lmao.ninja/countries";
+        String  url = "https://www.trackcorona.live/api/countries/";
 
         covidCountries = new ArrayList<>();
 
@@ -86,23 +87,37 @@ public class CountryFragment extends Fragment implements OnRvClick{
                 progressBar.setVisibility(View.GONE);
                 if (response != null) {
                     Log.e(TAG, "onResponse: " + response);
+
+
                     try {
-                        JSONArray jsonArray = new JSONArray(response);
+                        JSONObject countryResponse = new JSONObject(response);
+
+                        JSONArray jsonArray = countryResponse.getJSONArray("data");
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject data = jsonArray.getJSONObject(i);
-                            covidCountries.add(new CovidCountry(
+                      /*      covidCountries.add(new CovidCountry(
                                     data.getString("country"), data.getString("cases"),
                                     data.getString("todayCases"), data.getString("deaths"),
                                     data.getString("todayDeaths"), data.getString("recovered"),
                                     data.getString("active"), data.getString("critical"),
                                     data.getJSONObject("countryInfo")
-                                    ));
+                            ));*/
+
+                            covidCountries.add(new CountryApiModel(
+                                    data.getString("location"), data.getString("country_code"),
+                                    data.getDouble("latitude"), data.getDouble("longitude"),
+                                    data.getInt("confirmed"), data.getInt("dead"),
+                                    data.getInt("recovered"), data.getString("updated")
+                            ));
+
                         }
-                        tvTotalCountry.setText(jsonArray.length()+" countries");
+                        tvTotalCountry.setText(jsonArray.length() + " countries");
                         showRecyclerView();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+
+
                 }
             }
         },
@@ -117,7 +132,7 @@ public class CountryFragment extends Fragment implements OnRvClick{
     }
 
     @Override
-    public void afterClick(CovidCountry country) {
+    public void afterClick(CountryApiModel country) {
 
         showSelectedCovidCountry(country);
 

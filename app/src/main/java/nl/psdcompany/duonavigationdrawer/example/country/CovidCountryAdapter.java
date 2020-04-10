@@ -21,11 +21,11 @@ import nl.psdcompany.duonavigationdrawer.example.R;
 
 public class CovidCountryAdapter extends RecyclerView.Adapter<CovidCountryAdapter.ViewHolder> {
 
-    private ArrayList<CovidCountry> covidCountries;
+    private ArrayList<CountryApiModel> covidCountries;
     private OnRvClick listener;
     private Context context;
 
-    public CovidCountryAdapter(ArrayList<CovidCountry> covidCountries, CountryFragment listener, Context context){
+    public CovidCountryAdapter(ArrayList<CountryApiModel> covidCountries, CountryFragment listener, Context context){
         this.covidCountries = covidCountries;
         this.listener = listener;
         this.context = context;
@@ -36,21 +36,21 @@ public class CovidCountryAdapter extends RecyclerView.Adapter<CovidCountryAdapte
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_country, parent, false);
-
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        CovidCountry covidCountry = covidCountries.get(position);
+        CountryApiModel covidCountry = covidCountries.get(position);
 
-        holder.tvTotalCases.setText(covidCountry.getmCases());
-        holder.tvCountryName.setText(covidCountry.getmCovidCountry());
+
+        holder.tvCountryName.setText(covidCountry.getLocation());
+        //holder.tvTotalCases.setText(covidCountry.getConfirmed());
         try
         {
-            Glide.with(context).load(covidCountries.get(position).getmCountryInfo().getString("flag")).into(holder.ivCountryFlag);
+            Glide.with(context).load(covidCountry.getCountryFlag()).into(holder.ivCountryFlag);
             Log.d("promod", "onBindViewHolder: ");
-        } catch (JSONException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
