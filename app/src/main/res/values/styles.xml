@@ -24,12 +24,12 @@
 
 <style name="LabelFontStyle" >
     <item name="fontFamily">sans-serif-medium/</item>
-    <item name="android:textSize">14sp</item>
+    <item name="android:textSize">18sp</item>
 </style>
 
 <style name="TotalFontStyle" >
     <item name="fontFamily">sans-serif-condensed</item>
-    <item name="android:textSize">36sp</item>
+    <item name="android:textSize">44sp</item>
 </style>
 
 

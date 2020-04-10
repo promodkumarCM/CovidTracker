@@ -33,7 +33,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
+        View root = inflater.inflate(R.layout.fragment_home_new, container, false);
 
         // call view
         tvTotalConfirmed = root.findViewById(R.id.tvTotalConfirmed);
@@ -88,4 +88,7 @@ public class HomeFragment extends Fragment {
 
         queue.add(stringRequest);
     }
+
+
+
 }
