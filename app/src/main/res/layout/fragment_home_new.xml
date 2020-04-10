@@ -19,7 +19,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.8"
+                android:layout_weight="1"
                 android:background="@color/colorPrimaryDark">
 
                 <RelativeLayout
@@ -59,12 +59,24 @@
                     android:textColor="#fff"
                     android:textSize="24sp" />
 
+                <TextView
+                    android:id="@+id/tvLastUpdated"
+                    android:layout_below="@+id/tvTitle"
+                    style="@style/LabelFontStyle"
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    tools:text="Last Updated  Mon, 23 Mar 2020 1:20:30 PM" />
+
 
                 <TextView
                     android:id="@+id/tvLabelTotalConfirmed"
+                    android:layout_below="@+id/tvLastUpdated"
                     style="@style/LabelFontStyle"
                     android:layout_marginTop="12dp"
-                    android:layout_below="@+id/tvTitle"
                     android:layout_centerHorizontal="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -153,15 +165,7 @@
 
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tvLastUpdated"
-                    style="@style/LabelFontStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:textAlignment="center"
-                    android:textColor="#fff"
-                    tools:text="Last Updated  Mon, 23 Mar 2020 1:20:30 PM" />
+
 
 
             </LinearLayout>
