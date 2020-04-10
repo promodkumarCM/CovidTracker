@@ -32,7 +32,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dandelion Chocolate"
+                android:text="Advice To Public"
                 android:textColor="#000000"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -43,34 +43,12 @@
                 android:layout_marginTop="6dp"
                 android:orientation="horizontal">
 
-                <androidx.appcompat.widget.AppCompatRatingBar
-                    style="@style/Base.Widget.AppCompat.RatingBar.Small"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:numStars="5"
-                    android:rating="4" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="4.7"
-                    android:textColor="@color/colorAccent" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:text="(51)"
-                    android:textColor="@color/colorAccent" />
+                    tools:text="WORLD HEALTH ORGANIZATION"/>
 
             </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:text="12 min away"
-                 />
 
         </LinearLayout>
 
