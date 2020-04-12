@@ -10,6 +10,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import nl.psdcompany.duonavigationdrawer.example.Others.PublicInformation;
 import nl.psdcompany.duonavigationdrawer.example.country.CountryFragment;
 import nl.psdcompany.duonavigationdrawer.example.home.HomeFragment;
 import nl.psdcompany.duonavigationdrawer.views.DuoDrawerLayout;
@@ -73,12 +74,12 @@ public class MainActivity extends AppCompatActivity implements DuoMenuView.OnMen
 
     @Override
     public void onFooterClicked() {
-        Toast.makeText(this, "onFooterClicked", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Thanks Buddy", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onHeaderClicked() {
-        Toast.makeText(this, "onHeaderClicked", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "#Break the chain", Toast.LENGTH_SHORT).show();
     }
 
     private void goToFragment(Fragment fragment, boolean addToBackStack) {
@@ -88,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements DuoMenuView.OnMen
             transaction.addToBackStack(null);
         }
 
-        transaction.add(R.id.container, fragment).commit();
+        transaction.replace(R.id.container, fragment).commit();
     }
 
     @Override
@@ -106,6 +107,10 @@ public class MainActivity extends AppCompatActivity implements DuoMenuView.OnMen
                 break;
             case 1:
                 goToFragment(new CountryFragment(), false);
+                break;
+            case 2:
+                goToFragment(new PublicInformation(), false);
+                break;
         }
 
         // Close the drawer

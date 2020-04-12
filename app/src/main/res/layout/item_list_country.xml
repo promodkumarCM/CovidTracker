@@ -13,17 +13,18 @@
         android:layout_margin="5dp" />
 
     <TextView
-        android:id="@+id/tvTotalCases"
+        android:id="@+id/tvAffected"
         style="@style/LabelFontStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
         android:layout_marginLeft="5dp"
-        android:textAlignment="viewStart"
+        android:textAlignment="textStart"
         android:textColor="#EBE3E3"
         android:textSize="20sp"
-        tool:text="1342" />
+        tool:text="1342"
+        tool:ignore="RtlCompat" />
 
     <TextView
         android:id="@+id/tvCountryName"

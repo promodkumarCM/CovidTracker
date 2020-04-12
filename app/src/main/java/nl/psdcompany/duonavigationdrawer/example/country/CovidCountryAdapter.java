@@ -1,6 +1,7 @@
 package nl.psdcompany.duonavigationdrawer.example.country;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +11,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-
-import org.json.JSONException;
 
 import java.util.ArrayList;
 
@@ -35,7 +34,7 @@ public class CovidCountryAdapter extends RecyclerView.Adapter<CovidCountryAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_country, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.country_list, parent, false);
         return new ViewHolder(view);
     }
 
@@ -45,7 +44,9 @@ public class CovidCountryAdapter extends RecyclerView.Adapter<CovidCountryAdapte
 
 
         holder.tvCountryName.setText(covidCountry.getLocation());
-        //holder.tvTotalCases.setText(covidCountry.getConfirmed());
+        holder.tvAffected.setText("Confirmed :"+covidCountry.getConfirmed());
+        holder.tvDead.setText("Dead :"+covidCountry.getDead());
+        holder.tvRecovered.setText("Recovered :"+covidCountry.getRecovered());
         try
         {
             Glide.with(context).load(covidCountry.getCountryFlag()).into(holder.ivCountryFlag);
@@ -63,14 +64,17 @@ public class CovidCountryAdapter extends RecyclerView.Adapter<CovidCountryAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTotalCases, tvCountryName;
+        TextView tvTotalCases, tvCountryName,tvAffected,tvDead,tvRecovered;
         ImageView ivCountryFlag;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvTotalCases = itemView.findViewById(R.id.tvTotalCases);
+
             tvCountryName = itemView.findViewById(R.id.tvCountryName);
             ivCountryFlag = itemView.findViewById(R.id.ivCountryFlag);
+            tvAffected=itemView.findViewById(R.id.tvAffected);
+            tvDead=itemView.findViewById(R.id.tvDead);
+            tvRecovered=itemView.findViewById(R.id.tvRecovered);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

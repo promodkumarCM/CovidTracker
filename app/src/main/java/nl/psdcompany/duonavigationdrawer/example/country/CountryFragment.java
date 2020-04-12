@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,6 +28,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import nl.psdcompany.duonavigationdrawer.example.R;
 
@@ -56,8 +59,11 @@ public class CountryFragment extends Fragment implements OnRvClick {
         tvTotalCountry = root.findViewById(R.id.tvTotalCountries);
         rvCovidCountry.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rvCovidCountry.getContext(), DividerItemDecoration.VERTICAL);
-        rvCovidCountry.addItemDecoration(dividerItemDecoration);
+//        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rvCovidCountry.getContext(), DividerItemDecoration.VERTICAL);
+//        rvCovidCountry.addItemDecoration(dividerItemDecoration);
+
+        DividerItemDecoration itemDecorator = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
+        itemDecorator.setDrawable(ContextCompat.getDrawable(getContext(), R.drawable.divider));
 
         // call Volley method
         getDataFromServer();
@@ -65,7 +71,21 @@ public class CountryFragment extends Fragment implements OnRvClick {
 
     }
 
+
+    public static Comparator<CountryApiModel> CountrySort = new Comparator<CountryApiModel>() {
+
+        public int compare(CountryApiModel s1, CountryApiModel s2) {
+
+            int affected1 = s1.getConfirmed();
+            int affected2 = s2.getConfirmed();
+
+            /*For ascending order*/
+            return affected2-affected1;
+
+        }};
+
     private void showRecyclerView() {
+        Collections.sort(covidCountries, CountrySort);
         CovidCountryAdapter covidCountryAdapter = new CovidCountryAdapter(covidCountries, this, getActivity());
         rvCovidCountry.setAdapter(covidCountryAdapter);
     }
