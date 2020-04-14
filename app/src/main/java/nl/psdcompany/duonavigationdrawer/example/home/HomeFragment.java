@@ -1,5 +1,6 @@
 package nl.psdcompany.duonavigationdrawer.example.home;
 
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,15 +11,11 @@ import android.webkit.WebView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import nl.psdcompany.duonavigationdrawer.example.R;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -27,16 +24,17 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class HomeFragment extends Fragment {
 
-    private TextView tvTotalConfirmed, tvTotalDeaths, tvTotalRecovered, tvLastUpdated;
+    private TextView tvTotalConfirmed, tvTotalDeaths, tvTotalRecovered, tvLastUpdated,tvLabelTimeUpdated;
     private ProgressBar progressBar;
     private LinearLayout bottom_sheet;
     private BottomSheetBehavior sheetBehavior;
@@ -53,8 +51,7 @@ public class HomeFragment extends Fragment {
         tvTotalDeaths = root.findViewById(R.id.tvTotalDeaths);
         tvTotalRecovered = root.findViewById(R.id.tvTotalRecovered);
         tvLastUpdated = root.findViewById(R.id.tvLastUpdated);
-
-
+        tvLabelTimeUpdated=root.findViewById(R.id.tvLabelTimeUpdated);
         swipeRefreshLayout = root.findViewById(R.id.swipeRefreshHome);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -87,11 +84,9 @@ public class HomeFragment extends Fragment {
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
                 if (newState == BottomSheetBehavior.STATE_DRAGGING) {
                     sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-                }
-                else if(newState == BottomSheetBehavior.STATE_COLLAPSED){
+                } else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
                     fabOpenSheetBtn.setBackgroundResource(R.drawable.ic_down_arrow_lg);
-                }
-                else if(newState == BottomSheetBehavior.STATE_EXPANDED){
+                } else if (newState == BottomSheetBehavior.STATE_EXPANDED) {
 
                     fabOpenSheetBtn.setBackgroundResource(R.drawable.ic_down_arrow_lg);
 
@@ -110,18 +105,17 @@ public class HomeFragment extends Fragment {
         myWebView.loadUrl("https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public");
 
 
-
         // call Volley
         getData();
 
         return root;
     }
 
-    private String getDate(long milliSecond){
+    private String getDate(long milliSecond) {
         // Mon, 23 Mar 2020 02:01:04 PM
         SimpleDateFormat formatter = new SimpleDateFormat("EEE, dd MMM yyyy hh:mm:ss aaa");
 
-        Calendar calendar= Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(milliSecond);
         return formatter.format(calendar.getTime());
     }
@@ -136,15 +130,18 @@ public class HomeFragment extends Fragment {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-               // progressBar.setVisibility(View.GONE);
+                // progressBar.setVisibility(View.GONE);
                 swipeRefreshLayout.setRefreshing(false);
                 try {
                     JSONObject jsonObject = new JSONObject(response.toString());
 
-                    tvTotalConfirmed.setText(jsonObject.getString("cases"));
-                    tvTotalDeaths.setText(jsonObject.getString("deaths"));
-                    tvTotalRecovered.setText(jsonObject.getString("recovered"));
-                    tvLastUpdated.setText("Last Updated"+"\n"+getDate(jsonObject.getLong("updated")));
+                    String Cases=commaAdd(jsonObject.getString("cases"));//+"\nToday's case:\n(+" + jsonObject.getString("todayCases") + ")";
+                    String dead=commaAdd(jsonObject.getString("deaths")) ;//+"\nToday's case:\n(+" + jsonObject.getString("todayDeaths") + ")";
+                    tvTotalConfirmed.setText(Cases);
+                    tvTotalDeaths.setText(dead);
+                    tvTotalRecovered.setText(commaAdd(jsonObject.getString("recovered")));
+                    tvLastUpdated.setText("Last Updated" + "\n" + getDate(jsonObject.getLong("updated")));
+                    tvLabelTimeUpdated.setText("Last updated on:\n"+milliSecToMinute(jsonObject.getString("updated")));
                 } catch (JSONException e) {
                     e.printStackTrace();
                     swipeRefreshLayout.setRefreshing(false);
@@ -153,15 +150,41 @@ public class HomeFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-               // progressBar.setVisibility(View.GONE);
+                // progressBar.setVisibility(View.GONE);
                 Log.d("Error Response", error.toString());
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
 
         queue.add(stringRequest);
+
+
+    }
+
+    private String commaAdd(String number){
+
+
+        double amount = Double.parseDouble(number);
+        DecimalFormat formatter = new DecimalFormat("#,###");
+        String formatted = formatter.format(amount);
+
+        return formatted;
+    }
+
+    private String milliSecToMinute(String millisec){
+        DateFormat formatter = new SimpleDateFormat("dd MMM yyyy \n HH:mm:ss");
+
+        long milliSeconds= Long.parseLong(millisec);
+        System.out.println(milliSeconds);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(milliSeconds);
+        return formatter.format(calendar.getTime());
     }
 
 
-
 }
+
+
+
+
