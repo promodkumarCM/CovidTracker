@@ -1,11 +1,7 @@
 package nl.psdcompany.duonavigationdrawer.example.Others;
 
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
-import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 import nl.psdcompany.duonavigationdrawer.example.MainActivity;
 import nl.psdcompany.duonavigationdrawer.example.R;

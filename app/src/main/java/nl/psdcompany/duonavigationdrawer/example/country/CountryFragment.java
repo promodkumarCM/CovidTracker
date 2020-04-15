@@ -40,7 +40,7 @@ public class CountryFragment extends Fragment implements OnRvClick {
     TextView tvTotalCountry;
 
     private static final String TAG = CountryFragment.class.getSimpleName();
-    ArrayList<CountryApiModel> covidCountries;
+    ArrayList<CountryApiModel2> covidCountries;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -72,12 +72,12 @@ public class CountryFragment extends Fragment implements OnRvClick {
     }
 
 
-    public static Comparator<CountryApiModel> CountrySort = new Comparator<CountryApiModel>() {
+    public static Comparator<CountryApiModel2> CountrySort = new Comparator<CountryApiModel2>() {
 
-        public int compare(CountryApiModel s1, CountryApiModel s2) {
+        public int compare(CountryApiModel2 s1, CountryApiModel2 s2) {
 
-            int affected1 = s1.getConfirmed();
-            int affected2 = s2.getConfirmed();
+            int affected1 = s1.getTotalCases();
+            int affected2 = s2.getTotalCases();
 
             /*For ascending order*/
             return affected2-affected1;
@@ -90,14 +90,14 @@ public class CountryFragment extends Fragment implements OnRvClick {
         rvCovidCountry.setAdapter(covidCountryAdapter);
     }
 
-    private void showSelectedCovidCountry(CountryApiModel covidCountry) {
+    private void showSelectedCovidCountry(CountryApiModel2 covidCountry) {
         Intent covidCovidCountryDetail = new Intent(getActivity(), CovidCountryDetail.class);
-        covidCovidCountryDetail.putExtra("EXTRA_COVID", covidCountry);
+//        covidCovidCountryDetail.putExtra("EXTRA_COVID", covidCountry);
         startActivity(covidCovidCountryDetail);
     }
 
     private void getDataFromServer() {
-        String  url = "https://www.trackcorona.live/api/countries/";
+        String  url = "https://api.thevirustracker.com/free-api?countryTotals=ALL";
 
         covidCountries = new ArrayList<>();
 
@@ -112,7 +112,7 @@ public class CountryFragment extends Fragment implements OnRvClick {
                     try {
                         JSONObject countryResponse = new JSONObject(response);
 
-                        JSONArray jsonArray = countryResponse.getJSONArray("data");
+                        JSONArray jsonArray = countryResponse.getJSONArray("countryitems");
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject data = jsonArray.getJSONObject(i);
                       /*      covidCountries.add(new CovidCountry(
@@ -123,11 +123,11 @@ public class CountryFragment extends Fragment implements OnRvClick {
                                     data.getJSONObject("countryInfo")
                             ));*/
 
-                            covidCountries.add(new CountryApiModel(
-                                    data.getString("location"), data.getString("country_code"),
-                                    data.getDouble("latitude"), data.getDouble("longitude"),
-                                    data.getInt("confirmed"), data.getInt("dead"),
-                                    data.getInt("recovered"), data.getString("updated")
+                            covidCountries.add(new CountryApiModel2(
+                                    data.getInt("total_cases"), data.getInt("total_recovered "),
+                                    data.getInt("total_unresolved "), data.getInt("total_deaths"),
+                                    data.getInt("total_new_cases_today"), data.getInt("total_new_deaths_today "),
+                                    data.getInt("total_active_cases "), data.getInt("total_serious_cases ")
                             ));
 
                         }
@@ -152,7 +152,7 @@ public class CountryFragment extends Fragment implements OnRvClick {
     }
 
     @Override
-    public void afterClick(CountryApiModel country) {
+    public void afterClick(CountryApiModel2 country) {
 
         showSelectedCovidCountry(country);
 

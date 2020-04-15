@@ -10,6 +10,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import nl.psdcompany.duonavigationdrawer.example.Others.MapFragment;
 import nl.psdcompany.duonavigationdrawer.example.Others.PublicInformation;
 import nl.psdcompany.duonavigationdrawer.example.country.CountryFragment;
 import nl.psdcompany.duonavigationdrawer.example.home.HomeFragment;
@@ -111,6 +112,12 @@ public class MainActivity extends AppCompatActivity implements DuoMenuView.OnMen
             case 2:
                 goToFragment(new PublicInformation(), false);
                 break;
+            case 3:
+                goToFragment(new MapFragment(), false);
+                break;
+                default:
+                    goToFragment(new HomeFragment(), false);
+                    break;
         }
 
         // Close the drawer

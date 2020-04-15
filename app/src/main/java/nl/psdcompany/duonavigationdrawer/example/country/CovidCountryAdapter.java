@@ -1,7 +1,6 @@
 package nl.psdcompany.duonavigationdrawer.example.country;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,13 +19,13 @@ import nl.psdcompany.duonavigationdrawer.example.R;
 
 public class CovidCountryAdapter extends RecyclerView.Adapter<CovidCountryAdapter.ViewHolder> {
 
-    private ArrayList<CountryApiModel> covidCountries;
+    private ArrayList<CountryApiModel2> covidCountries;
     private OnRvClick listener;
     private Context context;
 
-    public CovidCountryAdapter(ArrayList<CountryApiModel> covidCountries, CountryFragment listener, Context context){
+    public CovidCountryAdapter(ArrayList<CountryApiModel2> covidCountries, CountryFragment listener, Context context){
         this.covidCountries = covidCountries;
-        this.listener = listener;
+       this.listener = listener;
         this.context = context;
 
     }
@@ -40,16 +39,16 @@ public class CovidCountryAdapter extends RecyclerView.Adapter<CovidCountryAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        CountryApiModel covidCountry = covidCountries.get(position);
+        CountryApiModel2 covidCountry = covidCountries.get(position);
 
 
-        holder.tvCountryName.setText(covidCountry.getLocation());
-        holder.tvAffected.setText("Confirmed :"+covidCountry.getConfirmed());
-        holder.tvDead.setText("Dead :"+covidCountry.getDead());
-        holder.tvRecovered.setText("Recovered :"+covidCountry.getRecovered());
+        holder.tvCountryName.setText(covidCountry.getTitle());
+        holder.tvAffected.setText("Confirmed :"+covidCountry.getTotalCases());
+        holder.tvDead.setText("Dead :"+covidCountry.getTotalDeaths());
+        holder.tvRecovered.setText("Recovered :"+covidCountry.getTotalRecovered());
         try
         {
-            Glide.with(context).load(covidCountry.getCountryFlag()).into(holder.ivCountryFlag);
+            Glide.with(context).load(covidCountry.getCode()).into(holder.ivCountryFlag);
             Log.d("promod", "onBindViewHolder: ");
         } catch (Exception e) {
             e.printStackTrace();
