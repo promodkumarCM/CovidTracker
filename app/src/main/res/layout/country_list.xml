@@ -4,96 +4,87 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="110dp"
-    android:background="@color/cardview_shadow_end_color">
+    android:layout_height="wrap_content"
+    android:background="@color/cardview_shadow_end_color"
+    android:padding="10dp">
 
     <ImageView
         android:id="@+id/ivCountryFlag"
-        android:layout_width="87dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="593dp"
-        android:layout_marginEnd="282dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginRight="282dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        tools:srcCompat="@tools:sample/avatars"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:srcCompat="@tools:sample/avatars" />
+        />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvCountryName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="34dp"
-        android:layout_marginEnd="185dp"
-        android:layout_marginLeft="107dp"
-        android:layout_marginRight="185dp"
-        android:layout_marginStart="107dp"
-        android:layout_marginTop="26dp"
         android:text="India"
-        android:textColor="#ffff"
         android:textStyle="bold"
-        android:textSize="22dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        app:layout_constraintBottom_toTopOf="@+id/tvDead"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="#ffff"
         app:layout_constraintStart_toEndOf="@+id/ivCountryFlag"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/ivCountryFlag"
+        app:layout_constraintBottom_toBottomOf="@id/ivCountryFlag"
+        app:layout_constraintRight_toRightOf="parent"/>
 
     <TextView
         android:id="@+id/tvAffected"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="22dp"
-        android:layout_marginEnd="77dp"
-        android:layout_marginLeft="115dp"
-        android:layout_marginRight="77dp"
-        android:layout_marginStart="115dp"
-        android:layout_marginTop="14dp"
-        android:text="1234"
-        android:textColor=" #ff4d4d"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tvDead"
+        android:text="Total Affected"
+        android:textColor="#ff4d4d"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivCountryFlag" />
+        app:layout_constraintEnd_toStartOf="@id/tvDead"
+        app:layout_constraintTop_toBottomOf="@id/ivCountryFlag"
+        />
+
 
     <TextView
         android:id="@+id/tvDead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="35dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="13dp"
-        android:text="4567"
+        android:text="Total Dead"
         android:textColor="#ff0000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tvRecovered"
-        app:layout_constraintStart_toEndOf="@+id/tvAffected"
-        app:layout_constraintTop_toBottomOf="@+id/tvCountryName" />
+        app:layout_constraintStart_toEndOf="@id/tvAffected"
+        app:layout_constraintEnd_toStartOf="@id/tvRecovered"
+        app:layout_constraintTop_toBottomOf="@id/ivCountryFlag"/>
 
     <TextView
         android:id="@+id/tvRecovered"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="27dp"
-        android:layout_marginEnd="135dp"
-        android:layout_marginLeft="43dp"
-        android:layout_marginRight="135dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="81dp"
-        android:text="2737373"
+        android:text="Recovered"
         android:textColor="#00ff00"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvDead"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/tvDead"
+        app:layout_constraintTop_toBottomOf="@id/ivCountryFlag"/>
+
+    <TextView
+        android:id="@+id/todaysAffected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Cases"
+        android:paddingTop="15dp"
+        android:textColor="#ff4d4d"
+        app:layout_constraintTop_toBottomOf="@id/tvAffected"
+        app:layout_constraintStart_toStartOf="@+id/tvAffected"
+        app:layout_constraintEnd_toEndOf="@+id/tvAffected"/>
+
+    <TextView
+        android:id="@+id/todaysDeath"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:text="Total Dead"
+        android:textColor="#ff0000"
+        app:layout_constraintTop_toBottomOf="@+id/tvDead"
+        app:layout_constraintStart_toStartOf="@+id/tvDead"
+        app:layout_constraintEnd_toEndOf="@+id/tvDead"
+
+
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

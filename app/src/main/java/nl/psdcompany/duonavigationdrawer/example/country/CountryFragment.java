@@ -1,6 +1,5 @@
 package nl.psdcompany.duonavigationdrawer.example.country;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -31,22 +31,24 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+
 import nl.psdcompany.duonavigationdrawer.example.R;
 
-public class CountryFragment extends Fragment implements OnRvClick {
+public class CountryFragment extends Fragment implements OnRvClick, SearchView.OnQueryTextListener {
 
     RecyclerView rvCovidCountry;
     ProgressBar progressBar;
     TextView tvTotalCountry;
+    SearchView countrySearch;
 
     private static final String TAG = CountryFragment.class.getSimpleName();
-    ArrayList<CountryApiModel2> covidCountries;
+    ArrayList<CountryApiModel> covidCountries;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_country, container, false);
-
         return root;
+
     }
 
     @Override
@@ -58,12 +60,19 @@ public class CountryFragment extends Fragment implements OnRvClick {
         progressBar = root.findViewById(R.id.progress_circular_country);
         tvTotalCountry = root.findViewById(R.id.tvTotalCountries);
         rvCovidCountry.setLayoutManager(new LinearLayoutManager(getActivity()));
+        countrySearch=root.findViewById(R.id.edCountrySearch);
+        countrySearch.setOnQueryTextListener(this);
 
-//        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rvCovidCountry.getContext(), DividerItemDecoration.VERTICAL);
-//        rvCovidCountry.addItemDecoration(dividerItemDecoration);
+        countrySearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                countrySearch.setIconified(false);
+            }
+        });
 
         DividerItemDecoration itemDecorator = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
         itemDecorator.setDrawable(ContextCompat.getDrawable(getContext(), R.drawable.divider));
+        rvCovidCountry.addItemDecoration(itemDecorator);
 
         // call Volley method
         getDataFromServer();
@@ -72,9 +81,9 @@ public class CountryFragment extends Fragment implements OnRvClick {
     }
 
 
-    public static Comparator<CountryApiModel2> CountrySort = new Comparator<CountryApiModel2>() {
+    public static Comparator<CountryApiModel> CountrySort = new Comparator<CountryApiModel>() {
 
-        public int compare(CountryApiModel2 s1, CountryApiModel2 s2) {
+        public int compare(CountryApiModel s1, CountryApiModel s2) {
 
             int affected1 = s1.getTotalCases();
             int affected2 = s2.getTotalCases();
@@ -90,10 +99,17 @@ public class CountryFragment extends Fragment implements OnRvClick {
         rvCovidCountry.setAdapter(covidCountryAdapter);
     }
 
-    private void showSelectedCovidCountry(CountryApiModel2 covidCountry) {
-        Intent covidCovidCountryDetail = new Intent(getActivity(), CovidCountryDetail.class);
-//        covidCovidCountryDetail.putExtra("EXTRA_COVID", covidCountry);
-        startActivity(covidCovidCountryDetail);
+    private void showRecyclerView(ArrayList<CountryApiModel> countryList){
+        CovidCountryAdapter covidCountryAdapter = new CovidCountryAdapter(countryList, this, getActivity());
+        rvCovidCountry.setAdapter(covidCountryAdapter);
+
+
+    }
+
+    private void showSelectedCovidCountry(CountryApiModel covidCountry) {
+//        Intent covidCovidCountryDetail = new Intent(getActivity(), CovidCountryDetail.class);
+////        covidCovidCountryDetail.putExtra("EXTRA_COVID", covidCountry);
+//        startActivity(covidCovidCountryDetail);
     }
 
     private void getDataFromServer() {
@@ -111,27 +127,37 @@ public class CountryFragment extends Fragment implements OnRvClick {
 
                     try {
                         JSONObject countryResponse = new JSONObject(response);
-
                         JSONArray jsonArray = countryResponse.getJSONArray("countryitems");
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            JSONObject data = jsonArray.getJSONObject(i);
-                      /*      covidCountries.add(new CovidCountry(
-                                    data.getString("country"), data.getString("cases"),
-                                    data.getString("todayCases"), data.getString("deaths"),
-                                    data.getString("todayDeaths"), data.getString("recovered"),
-                                    data.getString("active"), data.getString("critical"),
-                                    data.getJSONObject("countryInfo")
-                            ));*/
+                        JSONObject countryObject=jsonArray.getJSONObject(0);
 
-                            covidCountries.add(new CountryApiModel2(
-                                    data.getInt("total_cases"), data.getInt("total_recovered "),
-                                    data.getInt("total_unresolved "), data.getInt("total_deaths"),
-                                    data.getInt("total_new_cases_today"), data.getInt("total_new_deaths_today "),
-                                    data.getInt("total_active_cases "), data.getInt("total_serious_cases ")
+
+
+
+
+//                        for (int i = 0; i < 182; i++) {
+//
+//                          covidCountries.add(new CountryApiModel2(
+//                                    data.getString("country"), data.getString("cases"),
+//                                    data.getString("todayCases"), data.getString("deaths"),
+//                                    data.getString("todayDeaths"), data.getString("recovered"),
+//                                    data.getString("active"), data.getString("critical"),
+//                                    data.getJSONObject("countryInfo")
+//                            ));
+//                        }
+
+
+                        for (int i = 1; i <= 182; i++) {
+                            JSONObject data=countryObject.getJSONObject(""+i);
+                            covidCountries.add(new CountryApiModel(
+                                    data.getString("title"),data.getString("code"),
+                                    data.getInt("total_cases"), data.getInt("total_recovered"),
+                                    data.getInt("total_unresolved"), data.getInt("total_deaths"),
+                                    data.getInt("total_new_cases_today"), data.getInt("total_new_deaths_today"),
+                                    data.getInt("total_active_cases"), data.getInt("total_serious_cases")
                             ));
 
                         }
-                        tvTotalCountry.setText(jsonArray.length() + " countries");
+                        tvTotalCountry.setText(183 + " countries");
                         showRecyclerView();
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -152,9 +178,35 @@ public class CountryFragment extends Fragment implements OnRvClick {
     }
 
     @Override
-    public void afterClick(CountryApiModel2 country) {
+    public void afterClick(CountryApiModel country) {
 
         showSelectedCovidCountry(country);
 
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        searchCountry(newText);
+        return false;
+    }
+
+    private void searchCountry(String keyword){
+
+        CountryApiModel model;
+        ArrayList<CountryApiModel> searchList=new ArrayList<>();
+        for (int i=0;i<covidCountries.size();i++){
+            model=covidCountries.get(i);
+            if(model.getTitle().toLowerCase().contains(keyword.toLowerCase())){
+                searchList.add(model);
+            }
+
+        }
+
+        showRecyclerView(searchList);
     }
 }

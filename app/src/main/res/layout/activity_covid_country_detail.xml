@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:gravity="center"
-    tools:context=".country.CovidCountryDetail">
+    tools:context=".Unused.CovidCountryDetail">
 
 
     <LinearLayout

@@ -1,195 +1,138 @@
 package nl.psdcompany.duonavigationdrawer.example.country;
 
-import android.os.Parcel;
-import android.os.Parcelable;
+
 import android.text.TextUtils;
 
-public class CountryApiModel implements Parcelable {
+public class CountryApiModel {
 
 
-    private String location;
-
-    private String countryCode;
-
-    private Double latitude;
-
-    private Double longitude;
-
-    private Integer confirmed;
-
-    private Integer dead;
-
-    private Integer recovered;
-
-    private String updated;
-
-    private String countryFlag;
+private Integer ourid;
+private String title;
+private String code;
+private String source;
+private Integer totalCases;
+private Integer totalRecovered;
+private Integer totalUnresolved;
+private Integer totalDeaths;
+private Integer totalNewCasesToday;
+private Integer totalNewDeathsToday;
+private Integer totalActiveCases;
+private Integer totalSeriousCases;
 
 
-
-    public static final Creator<CountryApiModel> CREATOR = new Creator<CountryApiModel>() {
-        @Override
-        public CountryApiModel createFromParcel(Parcel in) {
-            return new CountryApiModel(in);
-        }
-
-        @Override
-        public CountryApiModel[] newArray(int size) {
-            return new CountryApiModel[size];
-        }
-    };
-
-    public String getCountryFlag() {
-        return countryFlag;
-    }
-
-    public void setCountryFlag(String countryFlag) {
-        this.countryFlag = countryFlag;
-    }
-
-    /**
-     * No args constructor for use in serialization
-     */
-    public CountryApiModel() {
-    }
-
-    /**
-     * @param recovered
-     * @param countryCode
-     * @param latitude
-     * @param location
-     * @param dead
-     * @param confirmed
-     * @param updated
-     * @param longitude
-     */
-    public CountryApiModel(String location, String countryCode, Double latitude, Double longitude, Integer confirmed, Integer dead, Integer recovered, String updated) {
+    public CountryApiModel(String title, String code, Integer totalCases, Integer totalRecovered, Integer totalUnresolved, Integer totalDeaths, Integer totalNewCasesToday, Integer totalNewDeathsToday, Integer totalActiveCases, Integer totalSeriousCases) {
         super();
-        this.location = location;
-        this.countryCode = countryCode;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.confirmed = confirmed;
-        this.dead = dead;
-        this.recovered = recovered;
-        this.updated = updated;
-        if (!TextUtils.isEmpty(countryCode)) {
-            this.countryFlag = "https://www.countryflags.io/" + countryCode + "/flat/64.png";
+        this.title=title;
+        this.code=code;
+        this.totalCases = totalCases;
+        this.totalRecovered = totalRecovered;
+        this.totalUnresolved = totalUnresolved;
+        this.totalDeaths = totalDeaths;
+        this.totalNewCasesToday = totalNewCasesToday;
+        this.totalNewDeathsToday = totalNewDeathsToday;
+        this.totalActiveCases = totalActiveCases;
+        this.totalSeriousCases = totalSeriousCases;
+
+
+        if (!TextUtils.isEmpty(code)) {
+            this.code = "https://www.countryflags.io/" + code + "/flat/64.png";
         }
-
     }
 
-    public String getLocation() {
-        return location;
-    }
+public Integer getOurid() {
+return ourid;
+}
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
+public void setOurid(Integer ourid) {
+this.ourid = ourid;
+}
 
-    public String getCountryCode() {
-        return countryCode;
-    }
+public String getTitle() {
+return title;
+}
 
-    public void setCountryCode(String countryCode) {
-        this.countryCode = countryCode;
-    }
+public void setTitle(String title) {
+this.title = title;
+}
 
-    public Double getLatitude() {
-        return latitude;
-    }
+public String getCode() {
+return code;
+}
 
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
-    }
+public void setCode(String code) {
+this.code = code;
+}
 
-    public Double getLongitude() {
-        return longitude;
-    }
+public String getSource() {
+return source;
+}
 
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
-    }
+public void setSource(String source) {
+this.source = source;
+}
 
-    public Integer getConfirmed() {
-        return confirmed;
-    }
+public Integer getTotalCases() {
+return totalCases;
+}
 
-    public void setConfirmed(Integer confirmed) {
-        this.confirmed = confirmed;
-    }
+public void setTotalCases(Integer totalCases) {
+this.totalCases = totalCases;
+}
 
-    public Integer getDead() {
-        return dead;
-    }
+public Integer getTotalRecovered() {
+return totalRecovered;
+}
 
-    public void setDead(Integer dead) {
-        this.dead = dead;
-    }
+public void setTotalRecovered(Integer totalRecovered) {
+this.totalRecovered = totalRecovered;
+}
 
-    public Integer getRecovered() {
-        return recovered;
-    }
+public Integer getTotalUnresolved() {
+return totalUnresolved;
+}
 
-    public void setRecovered(Integer recovered) {
-        this.recovered = recovered;
-    }
+public void setTotalUnresolved(Integer totalUnresolved) {
+this.totalUnresolved = totalUnresolved;
+}
 
-    public String getUpdated() {
-        return updated;
-    }
+public Integer getTotalDeaths() {
+return totalDeaths;
+}
 
-    public void setUpdated(String updated) {
-        this.updated = updated;
-    }
+public void setTotalDeaths(Integer totalDeaths) {
+this.totalDeaths = totalDeaths;
+}
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
+public Integer getTotalNewCasesToday() {
+return totalNewCasesToday;
+}
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
+public void setTotalNewCasesToday(Integer totalNewCasesToday) {
+this.totalNewCasesToday = totalNewCasesToday;
+}
 
-        dest.writeString(this.location);
-        dest.writeString(this.countryCode);
-        dest.writeDouble(this.latitude);
-        dest.writeDouble(this.longitude);
-        dest.writeInt(this.confirmed);
-        dest.writeInt(this.dead);
-        dest.writeInt(this.recovered);
-        dest.writeString(this.updated);
-    }
+public Integer getTotalNewDeathsToday() {
+return totalNewDeathsToday;
+}
 
-    protected CountryApiModel(Parcel in) {
-        location = in.readString();
-        countryCode = in.readString();
-        if (in.readByte() == 0) {
-            latitude = null;
-        } else {
-            latitude = in.readDouble();
-        }
-        if (in.readByte() == 0) {
-            longitude = null;
-        } else {
-            longitude = in.readDouble();
-        }
-        if (in.readByte() == 0) {
-            confirmed = null;
-        } else {
-            confirmed = in.readInt();
-        }
-        if (in.readByte() == 0) {
-            dead = null;
-        } else {
-            dead = in.readInt();
-        }
-        if (in.readByte() == 0) {
-            recovered = null;
-        } else {
-            recovered = in.readInt();
-        }
-        updated = in.readString();
-        countryFlag = in.readString();
-    }
+public void setTotalNewDeathsToday(Integer totalNewDeathsToday) {
+this.totalNewDeathsToday = totalNewDeathsToday;
+}
+
+public Integer getTotalActiveCases() {
+return totalActiveCases;
+}
+
+public void setTotalActiveCases(Integer totalActiveCases) {
+this.totalActiveCases = totalActiveCases;
+}
+
+public Integer getTotalSeriousCases() {
+return totalSeriousCases;
+}
+
+public void setTotalSeriousCases(Integer totalSeriousCases) {
+this.totalSeriousCases = totalSeriousCases;
+}
+
 }

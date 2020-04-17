@@ -1,6 +1,7 @@
 package nl.psdcompany.duonavigationdrawer.example.home;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,13 +25,19 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.smarteist.autoimageslider.IndicatorAnimations;
+import com.smarteist.autoimageslider.SliderAnimations;
+import com.smarteist.autoimageslider.SliderView;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class HomeFragment extends Fragment {
 
@@ -40,11 +47,15 @@ public class HomeFragment extends Fragment {
     private BottomSheetBehavior sheetBehavior;
     private FloatingActionButton fabOpenSheetBtn;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private SliderView sliderView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_home_new, container, false);
+
+
+
 
         // call view
         tvTotalConfirmed = root.findViewById(R.id.tvTotalConfirmed);
@@ -113,7 +124,7 @@ public class HomeFragment extends Fragment {
 
     private String getDate(long milliSecond) {
         // Mon, 23 Mar 2020 02:01:04 PM
-        SimpleDateFormat formatter = new SimpleDateFormat("EEE, dd MMM yyyy hh:mm:ss aaa");
+        SimpleDateFormat formatter = new SimpleDateFormat("EEE, \tdd MMM yyyy \thh:mm:ss");
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(milliSecond);
@@ -125,7 +136,7 @@ public class HomeFragment extends Fragment {
 
         RequestQueue queue = Volley.newRequestQueue(getActivity());
 
-        String url = "https://corona.lmao.ninja/all";
+        String url = "https://corona.lmao.ninja/v2/all";
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -181,7 +192,6 @@ public class HomeFragment extends Fragment {
         calendar.setTimeInMillis(milliSeconds);
         return formatter.format(calendar.getTime());
     }
-
 
 }
 

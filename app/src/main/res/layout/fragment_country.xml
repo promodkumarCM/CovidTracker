@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".country.CovidCountryDetail">
+    tools:context=".Unused.CovidCountryDetail">
 
     <LinearLayout
         android:id="@+id/linearLayoutTotalCountries"
@@ -23,11 +23,20 @@
             tools:text="189 countries" />
     </LinearLayout>
 
+    <androidx.appcompat.widget.SearchView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/edCountrySearch"
+        android:paddingTop="10dp"
+        android:background="#3973ac"
+        android:layout_below="@+id/linearLayoutTotalCountries"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCovidCountry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/linearLayoutTotalCountries"
+        android:layout_below="@id/edCountrySearch"
          />
 
     <ProgressBar
