@@ -6,9 +6,11 @@
     <color name="colorPrimaryDark">#FF478EFF</color>
     <color name="colorAccent">#FFDD7792</color>-->
 
-    <color name="colorPrimary">#009688</color>
-    <color name="colorPrimaryDark">#006F62</color>
+    <color name="colorPrimary">#009ea5</color>
+    <color name="colorPrimaryDark">#029E8A</color>
     <color name="colorAccent">#FF4081</color>
+
+
 
     <color name="transparent">#00FFFFFF</color>
 

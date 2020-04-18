@@ -22,6 +22,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.internal.BaselineLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,6 +35,7 @@ import java.util.Comparator;
 
 import nl.psdcompany.duonavigationdrawer.example.R;
 import nl.psdcompany.duonavigationdrawer.example.myinterface.OnRvClick;
+import nl.psdcompany.duonavigationdrawer.example.utils.BasilHelper;
 
 public class CountryFragment extends Fragment implements OnRvClick, SearchView.OnQueryTextListener {
 
@@ -117,6 +119,9 @@ public class CountryFragment extends Fragment implements OnRvClick, SearchView.O
     }
 
     private void getDataFromServer() {
+
+        BasilHelper.showProgress(getActivity());
+
         String  url = "https://api.thevirustracker.com/free-api?countryTotals=ALL";
 
         covidCountries = new ArrayList<>();
@@ -124,7 +129,9 @@ public class CountryFragment extends Fragment implements OnRvClick, SearchView.O
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                progressBar.setVisibility(View.GONE);
+
+                BasilHelper.hideProgress();
+
                 if (response != null) {
                     Log.e(TAG, "onResponse: " + response);
 
@@ -134,28 +141,10 @@ public class CountryFragment extends Fragment implements OnRvClick, SearchView.O
                         JSONArray jsonArray = countryResponse.getJSONArray("countryitems");
                         JSONObject countryObject=jsonArray.getJSONObject(0);
 
-
-
-
-
-//                        for (int i = 0; i < 182; i++) {
-//
-//                          covidCountries.add(new CountryApiModel2(
-//                                    data.getString("country"), data.getString("cases"),
-//                                    data.getString("todayCases"), data.getString("deaths"),
-//                                    data.getString("todayDeaths"), data.getString("recovered"),
-//                                    data.getString("active"), data.getString("critical"),
-//                                    data.getJSONObject("countryInfo")
-//                            ));
-//                        }
-
-
-
-
                         for (int i = 1; i <= 182; i++) {
-                            JSONObject data=countryObject.getJSONObject(""+i);
+                            JSONObject data = countryObject.getJSONObject("" + i);
                             covidCountries.add(new CountryApiModel(
-                                    data.getString("title"),data.getString("code"),
+                                    data.getString("title"), data.getString("code"),
                                     data.getInt("total_cases"), data.getInt("total_recovered"),
                                     data.getInt("total_unresolved"), data.getInt("total_deaths"),
                                     data.getInt("total_new_cases_today"), data.getInt("total_new_deaths_today"),
@@ -163,13 +152,10 @@ public class CountryFragment extends Fragment implements OnRvClick, SearchView.O
                             ));
 
                         }
-
-                        //tvTotalCountry.setText(183 + " countries");
-
-
                         showRecyclerView();
                     } catch (JSONException e) {
                         e.printStackTrace();
+                        BasilHelper.hideProgress();
                     }
 
 
@@ -179,7 +165,8 @@ public class CountryFragment extends Fragment implements OnRvClick, SearchView.O
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        progressBar.setVisibility(View.GONE);
+                        //progressBar.setVisibility(View.GONE);
+                        BasilHelper.hideProgress();
                         Log.e(TAG, "onResponse: " + error);
                     }
                 });

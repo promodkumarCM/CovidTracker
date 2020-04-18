@@ -53,8 +53,8 @@ public class CovidCountryAdapter extends RecyclerView.Adapter<CovidCountryAdapte
         holder.tvAffected.setText(""+covidCountry.getTotalCases());
         holder.tvDead.setText(""+covidCountry.getTotalDeaths());
         holder.tvRecovered.setText(""+covidCountry.getTotalRecovered());
-        holder.tvTodaysAffected.setText(""+covidCountry.getTotalNewCasesToday());
-        holder.tvTodaysDeath.setText(""+covidCountry.getTotalNewDeathsToday());
+        holder.tvTodaysAffected.setText("+"+covidCountry.getTotalNewCasesToday());
+        holder.tvTodaysDeath.setText("+"+covidCountry.getTotalNewDeathsToday());
 
         try
         {

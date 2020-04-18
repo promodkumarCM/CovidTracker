@@ -160,9 +160,10 @@ public class HomeFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                // progressBar.setVisibility(View.GONE);
+
                 Log.d("Error Response", error.toString());
                 swipeRefreshLayout.setRefreshing(false);
+                BasilHelper.hideProgress();
             }
         });
 
