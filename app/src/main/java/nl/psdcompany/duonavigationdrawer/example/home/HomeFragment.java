@@ -1,7 +1,6 @@
 package nl.psdcompany.duonavigationdrawer.example.home;
 
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,11 +11,12 @@ import android.webkit.WebView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import nl.psdcompany.duonavigationdrawer.example.R;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -26,20 +26,20 @@ import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
+
+import nl.psdcompany.duonavigationdrawer.example.R;
+import nl.psdcompany.duonavigationdrawer.example.utils.BasilHelper;
 
 public class HomeFragment extends Fragment {
 
-    private TextView tvTotalConfirmed, tvTotalDeaths, tvTotalRecovered, tvLastUpdated,tvLabelTimeUpdated;
+    private TextView tvTotalConfirmed, tvTotalDeaths, tvTotalRecovered, tvLastUpdated, tvLabelTimeUpdated;
     private ProgressBar progressBar;
     private LinearLayout bottom_sheet;
     private BottomSheetBehavior sheetBehavior;
@@ -52,14 +52,12 @@ public class HomeFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_home_new, container, false);
 
 
-
-
         // call view
         tvTotalConfirmed = root.findViewById(R.id.tvTotalConfirmed);
         tvTotalDeaths = root.findViewById(R.id.tvTotalDeaths);
         tvTotalRecovered = root.findViewById(R.id.tvTotalRecovered);
         tvLastUpdated = root.findViewById(R.id.tvLastUpdated);
-        tvLabelTimeUpdated=root.findViewById(R.id.tvLabelTimeUpdated);
+        tvLabelTimeUpdated = root.findViewById(R.id.tvLabelTimeUpdated);
         swipeRefreshLayout = root.findViewById(R.id.swipeRefreshHome);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -131,6 +129,8 @@ public class HomeFragment extends Fragment {
     private void getData() {
         swipeRefreshLayout.setRefreshing(true);
 
+        BasilHelper.showProgress(getActivity());
+
         RequestQueue queue = Volley.newRequestQueue(getActivity());
 
         String url = "https://corona.lmao.ninja/v2/all";
@@ -140,18 +140,20 @@ public class HomeFragment extends Fragment {
             public void onResponse(String response) {
                 // progressBar.setVisibility(View.GONE);
                 swipeRefreshLayout.setRefreshing(false);
+                BasilHelper.hideProgress();
                 try {
                     JSONObject jsonObject = new JSONObject(response.toString());
 
-                    String Cases=commaAdd(jsonObject.getString("cases"));//+"\nToday's case:\n(+" + jsonObject.getString("todayCases") + ")";
-                    String dead=commaAdd(jsonObject.getString("deaths")) ;//+"\nToday's case:\n(+" + jsonObject.getString("todayDeaths") + ")";
+                    String Cases = commaAdd(jsonObject.getString("cases"));//+"\nToday's case:\n(+" + jsonObject.getString("todayCases") + ")";
+                    String dead = commaAdd(jsonObject.getString("deaths"));//+"\nToday's case:\n(+" + jsonObject.getString("todayDeaths") + ")";
                     tvTotalConfirmed.setText(Cases);
                     tvTotalDeaths.setText(dead);
                     tvTotalRecovered.setText(commaAdd(jsonObject.getString("recovered")));
                     tvLastUpdated.setText("Last Updated" + "\n" + getDate(jsonObject.getLong("updated")));
-                    tvLabelTimeUpdated.setText("Last updated on:\n"+milliSecToMinute(jsonObject.getString("updated")));
+                    tvLabelTimeUpdated.setText("Last updated on:\n" + milliSecToMinute(jsonObject.getString("updated")));
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    BasilHelper.hideProgress();
                     swipeRefreshLayout.setRefreshing(false);
                 }
             }
@@ -169,7 +171,7 @@ public class HomeFragment extends Fragment {
 
     }
 
-    private String commaAdd(String number){
+    private String commaAdd(String number) {
 
 
         double amount = Double.parseDouble(number);
@@ -179,10 +181,10 @@ public class HomeFragment extends Fragment {
         return formatted;
     }
 
-    private String milliSecToMinute(String millisec){
+    private String milliSecToMinute(String millisec) {
         DateFormat formatter = new SimpleDateFormat("dd MMM yyyy \n HH:mm:ss");
 
-        long milliSeconds= Long.parseLong(millisec);
+        long milliSeconds = Long.parseLong(millisec);
         System.out.println(milliSeconds);
 
         Calendar calendar = Calendar.getInstance();
