@@ -11,27 +11,33 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
-<style name="BottomNavigationView">
-    <item name="fontFamily">@color/colorPrimary</item>
-    <item name="android:textSize">10sp</item>
-    <item name="android:textColor">#fff</item>
-</style>
+    <style name="BottomNavigationView">
+        <item name="fontFamily">@color/colorPrimary</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">#fff</item>
+    </style>
 
-<style name="LabelFontStyle" >
-    <item name="fontFamily">sans-serif-medium/</item>
-    <item name="android:textSize">18sp</item>
-</style>
+    <style name="LabelFontStyle">
+        <item name="fontFamily">sans-serif-medium/</item>
+        <item name="android:textSize">18sp</item>
+    </style>
 
-<style name="TotalFontStyle" >
-    <item name="fontFamily">sans-serif-condensed</item>
-    <item name="android:textSize">44sp</item>
-</style>
+    <style name="TotalFontStyle">
+        <item name="fontFamily">sans-serif-condensed</item>
+        <item name="android:textSize">44sp</item>
+    </style>
 
+
+    <style name="MBillProgressTheme" parent="@android:style/Widget.ProgressBar">
+        <item name="android:visibility">gone</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:indeterminateDrawable">@drawable/drawable_progress</item>
+    </style>
 
 
 </resources>

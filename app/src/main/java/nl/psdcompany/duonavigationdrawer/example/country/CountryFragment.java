@@ -32,8 +32,8 @@ import java.util.Collections;
 import java.util.Comparator;
 
 
-import nl.psdcompany.duonavigationdrawer.example.MainActivity;
 import nl.psdcompany.duonavigationdrawer.example.R;
+import nl.psdcompany.duonavigationdrawer.example.myinterface.OnRvClick;
 
 public class CountryFragment extends Fragment implements OnRvClick, SearchView.OnQueryTextListener {
 
