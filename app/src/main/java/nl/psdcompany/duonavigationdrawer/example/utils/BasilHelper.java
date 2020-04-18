@@ -151,13 +151,12 @@ public class BasilHelper {
      * @param TextColorId this is the fifth parameter for Snackbar  method
      */
     public static void Snackbar(Context mContext, View view, String Message, int colorId, int TextColorId) {
-       /* Snackbar snackbar = Snackbar.make(view, Message, Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(view, Message, Snackbar.LENGTH_LONG);
         View snackView = snackbar.getView();
         snackView.setBackgroundColor(ContextCompat.getColor(mContext, colorId));
-        TextView snackbarTextView = (TextView) snackView.findViewById(androidx.R.id.snackbar_text);
-        //
+        TextView snackbarTextView = (TextView) snackView.findViewById(com.google.android.material.R.id.snackbar_text);
         snackbarTextView.setTextColor(ContextCompat.getColor(mContext, TextColorId));
-        snackbar.show();*/
+        snackbar.show();
     }
 
     public static void logCat(String message) {
