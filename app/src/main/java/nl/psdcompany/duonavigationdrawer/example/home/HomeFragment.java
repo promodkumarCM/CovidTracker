@@ -25,9 +25,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.smarteist.autoimageslider.IndicatorAnimations;
-import com.smarteist.autoimageslider.SliderAnimations;
-import com.smarteist.autoimageslider.SliderView;
+
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,7 +45,6 @@ public class HomeFragment extends Fragment {
     private BottomSheetBehavior sheetBehavior;
     private FloatingActionButton fabOpenSheetBtn;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private SliderView sliderView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
