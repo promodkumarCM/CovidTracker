@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import nl.psdcompany.duonavigationdrawer.example.R;
+import nl.psdcompany.duonavigationdrawer.example.myinterface.OnRvClick;
 
 public class CovidCountryAdapter extends RecyclerView.Adapter<CovidCountryAdapter.ViewHolder> {
 
