@@ -1,90 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/cardview_shadow_end_color"
-    android:padding="10dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="6dp">
 
-    <ImageView
-        android:id="@+id/ivCountryFlag"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        tools:srcCompat="@tools:sample/avatars"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvCountryName"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="India"
-        android:textStyle="bold"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#ffff"
-        app:layout_constraintStart_toEndOf="@+id/ivCountryFlag"
-        app:layout_constraintTop_toTopOf="@+id/ivCountryFlag"
-        app:layout_constraintBottom_toBottomOf="@id/ivCountryFlag"
-        app:layout_constraintRight_toRightOf="parent"/>
+        android:background="@color/cardview_shadow_end_color"
+        android:paddingBottom="10dp"
+        android:paddingTop="4dp"
+        android:paddingRight="4dp"
+        android:paddingLeft="4dp">
 
-    <TextView
-        android:id="@+id/tvAffected"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Total Affected"
-        android:textColor="#ff4d4d"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tvDead"
-        app:layout_constraintTop_toBottomOf="@id/ivCountryFlag"
-        />
+        <ImageView
+            android:id="@+id/ivCountryFlag"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCountryName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="India"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/ivCountryFlag"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivCountryFlag"
+            app:layout_constraintTop_toTopOf="@+id/ivCountryFlag" />
 
-    <TextView
-        android:id="@+id/tvDead"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Total Dead"
-        android:textColor="#ff0000"
-        app:layout_constraintStart_toEndOf="@id/tvAffected"
-        app:layout_constraintEnd_toStartOf="@id/tvRecovered"
-        app:layout_constraintTop_toBottomOf="@id/ivCountryFlag"/>
-
-    <TextView
-        android:id="@+id/tvRecovered"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Recovered"
-        android:textColor="#00ff00"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tvDead"
-        app:layout_constraintTop_toBottomOf="@id/ivCountryFlag"/>
-
-    <TextView
-        android:id="@+id/todaysAffected"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Cases"
-        android:paddingTop="15dp"
-        android:textColor="#ff4d4d"
-        app:layout_constraintTop_toBottomOf="@id/tvAffected"
-        app:layout_constraintStart_toStartOf="@+id/tvAffected"
-        app:layout_constraintEnd_toEndOf="@+id/tvAffected"/>
-
-    <TextView
-        android:id="@+id/todaysDeath"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="15dp"
-        android:text="Total Dead"
-        android:textColor="#ff0000"
-        app:layout_constraintTop_toBottomOf="@+id/tvDead"
-        app:layout_constraintStart_toStartOf="@+id/tvDead"
-        app:layout_constraintEnd_toEndOf="@+id/tvDead"
+        <TextView
+            android:id="@+id/tvAffected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Affected"
+            android:textColor="#ff4d4d"
+            app:layout_constraintEnd_toStartOf="@id/tvDead"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivCountryFlag" />
 
 
-        />
+        <TextView
+            android:id="@+id/tvDead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Dead"
+            android:textColor="#ff0000"
+            app:layout_constraintEnd_toStartOf="@id/tvRecovered"
+            app:layout_constraintStart_toEndOf="@id/tvAffected"
+            app:layout_constraintTop_toBottomOf="@id/ivCountryFlag" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tvRecovered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recovered"
+            android:textColor="#00ff00"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvDead"
+            app:layout_constraintTop_toBottomOf="@id/ivCountryFlag" />
+
+        <TextView
+            android:id="@+id/todaysAffected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:text="New Cases"
+            android:textColor="#ff4d4d"
+            app:layout_constraintEnd_toEndOf="@+id/tvAffected"
+            app:layout_constraintStart_toStartOf="@+id/tvAffected"
+            app:layout_constraintTop_toBottomOf="@id/tvAffected" />
+
+        <TextView
+            android:id="@+id/todaysDeath"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:text="Total Dead"
+            android:textColor="#ff0000"
+            app:layout_constraintEnd_toEndOf="@+id/tvDead"
+            app:layout_constraintStart_toStartOf="@+id/tvDead"
+            app:layout_constraintTop_toBottomOf="@+id/tvDead"
+
+
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

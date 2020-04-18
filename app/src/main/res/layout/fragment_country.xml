@@ -1,35 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    tools:context=".Unused.CovidCountryDetail">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:id="@+id/linearLayoutTotalCountries"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimaryDark"
-        android:gravity="center">
-
-        <TextView
-            android:id="@+id/tvTotalCountries"
-            style="@style/TotalFontStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#fff"
-            android:textSize="24sp"
-            tools:text="189 countries" />
-    </LinearLayout>
 
     <androidx.appcompat.widget.SearchView
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:id="@+id/edCountrySearch"
         android:paddingTop="10dp"
-        android:background="#3973ac"
-        android:layout_below="@+id/linearLayoutTotalCountries"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/search_rounded_rect"
+        android:elevation="5dp"
+        app:queryHint="Search Country Name"
+        android:defaultFocusHighlightEnabled="true"
         />
 
     <androidx.recyclerview.widget.RecyclerView

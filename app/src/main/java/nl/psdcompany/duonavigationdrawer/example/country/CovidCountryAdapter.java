@@ -33,7 +33,7 @@ public class CovidCountryAdapter extends RecyclerView.Adapter<CovidCountryAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.country_list, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.countrt_list_new, parent, false);
         return new ViewHolder(view);
     }
 
@@ -43,11 +43,17 @@ public class CovidCountryAdapter extends RecyclerView.Adapter<CovidCountryAdapte
 
 
         holder.tvCountryName.setText(covidCountry.getTitle());
-        holder.tvAffected.setText("Confirmed :"+covidCountry.getTotalCases());
+       /* holder.tvAffected.setText("Confirmed :"+covidCountry.getTotalCases());
         holder.tvDead.setText("Dead :"+covidCountry.getTotalDeaths());
         holder.tvRecovered.setText("Recovered :"+covidCountry.getTotalRecovered());
         holder.tvTodaysAffected.setText("New Cases : +"+covidCountry.getTotalNewCasesToday());
-        holder.tvTodaysDeath.setText("New Death : +"+covidCountry.getTotalNewDeathsToday());
+        holder.tvTodaysDeath.setText("New Death : +"+covidCountry.getTotalNewDeathsToday());*/
+
+        holder.tvAffected.setText(""+covidCountry.getTotalCases());
+        holder.tvDead.setText(""+covidCountry.getTotalDeaths());
+        holder.tvRecovered.setText(""+covidCountry.getTotalRecovered());
+        holder.tvTodaysAffected.setText(""+covidCountry.getTotalNewCasesToday());
+        holder.tvTodaysDeath.setText(""+covidCountry.getTotalNewDeathsToday());
 
         try
         {
