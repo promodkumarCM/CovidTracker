@@ -46,13 +46,10 @@
 
 
     <color name="colorInitializingBorder">#00695c</color>
-
     <color name="cardColorBackground">#121212</color>
     <color name="cardObjectiveText">#779ECB</color>
-
     <color name="linearBlockBackground">#3e3d3d</color>
     <color name="configBuilderSelectedBackground">#262525</color>
-
     <color name="colorAcceptTempButton">#f4d700</color>
     <color name="colorTreatmentButton">#67dfe8</color>
     <color name="colorCalibrationButton">#e93057</color>
@@ -63,51 +60,37 @@
     <color name="colorSetExtendedButton">#FFDD7792</color>
     <color name="colorProfileSwitchButton">#ca77dd</color>
     <color name="colorTempTargetButton">#d43429</color>
-
     <color name="colorInProgress">#c45026</color>
     <color name="colorActive">#1b5e20</color>
     <color name="colorNotEnded">#190084</color>
-
     <color name="colorPumpLabel">#779ECB</color>
     <color name="cardItemLabel">#FF478EFF</color>
-
     <color name="loopenabled">#47c8ff</color>
     <color name="loopdisabled">#FFDD7792</color>
     <color name="looppumpsuspended">#ff0400</color>
-
     <color name="notificationAnnouncement">#FF8C00</color>
     <color name="notificationUrgent">#ff0400</color>
     <color name="notificationNormal">#ff5e55</color>
     <color name="notificationLow">#ff827c</color>
     <color name="notificationInfo">#009705</color>
-
-
-
-
     <color name="swipe_color_1">#4CAF50</color>
     <color name="swipe_color_2">#03A9F4</color>
     <color name="swipe_color_3">#FFC107</color>
     <color name="swipe_color_4">#FF5722</color>
-
     <color name="color_section">#4CAF50</color>
     <color name="color_author">#8E24AA</color>
-
     <!-- Colors for settings of color theme-->
     <color name="white">#ffffff</color>
     <color name="violet">#9c27b0</color>
     <color name="light_green">#8bc34a</color>
-
     <!-- Colors for gradient.xml file -->
     <color name="gradient_center_color">#880d0d0f</color>
     <color name="gradient_end_color">#885d5d5e</color>
     <color name="gradient_start_color">#880f0f10</color>
-
     <color name="color_trail_text">#102027</color>
     <color name="color_date_text">#a4a4a4</color>
-
     <color name="color_app_bar_text">#005689</color>
     <color name="color_tab_text">#a7c0cd</color>
-
     <color name="nav_bar_start">#7db1ec</color>
     <color name="nav_bar_end">#002e5b</color>
 
