@@ -59,16 +59,6 @@
 
                 <!--poda nari-->
 
-                <TextView
-                    android:id="@+id/tvLabelTimeUpdated"
-                    style="@style/LabelFontStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="time"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:textColor="#fff" />
 
 
             </RelativeLayout>
@@ -171,6 +161,16 @@
 
                 </LinearLayout>
 
+                <TextView
+                    android:id="@+id/tvLabelTimeUpdated"
+                    style="@style/LabelFontStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="time"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="#fff" />
 
 
 
