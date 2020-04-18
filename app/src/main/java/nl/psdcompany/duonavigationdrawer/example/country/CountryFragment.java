@@ -32,6 +32,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 
+import nl.psdcompany.duonavigationdrawer.example.MainActivity;
 import nl.psdcompany.duonavigationdrawer.example.R;
 
 public class CountryFragment extends Fragment implements OnRvClick, SearchView.OnQueryTextListener {
@@ -46,6 +47,8 @@ public class CountryFragment extends Fragment implements OnRvClick, SearchView.O
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
+        getActivity().setTitle("Details : 183 Countries");
         View root = inflater.inflate(R.layout.fragment_country, container, false);
         return root;
 
@@ -58,7 +61,7 @@ public class CountryFragment extends Fragment implements OnRvClick, SearchView.O
         // call view
         rvCovidCountry = root.findViewById(R.id.rvCovidCountry);
         progressBar = root.findViewById(R.id.progress_circular_country);
-        tvTotalCountry = root.findViewById(R.id.tvTotalCountries);
+        //tvTotalCountry = root.findViewById(R.id.tvTotalCountries);
         rvCovidCountry.setLayoutManager(new LinearLayoutManager(getActivity()));
         countrySearch=root.findViewById(R.id.edCountrySearch);
         countrySearch.setOnQueryTextListener(this);
@@ -79,6 +82,7 @@ public class CountryFragment extends Fragment implements OnRvClick, SearchView.O
 
 
     }
+
 
 
     public static Comparator<CountryApiModel> CountrySort = new Comparator<CountryApiModel>() {
@@ -159,7 +163,10 @@ public class CountryFragment extends Fragment implements OnRvClick, SearchView.O
                             ));
 
                         }
-                        tvTotalCountry.setText(183 + " countries");
+
+                        //tvTotalCountry.setText(183 + " countries");
+
+
                         showRecyclerView();
                     } catch (JSONException e) {
                         e.printStackTrace();
