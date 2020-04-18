@@ -57,6 +57,8 @@
                     android:textSize="24sp" />
 
 
+                <!--poda nari-->
+
                 <TextView
                     android:id="@+id/tvLabelTimeUpdated"
                     style="@style/LabelFontStyle"
