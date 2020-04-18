@@ -1,12 +1,6 @@
 <resources>
 
 
-    <string name="hello_blank_fragment">This is the main fragment</string>
-    <string name="app_name">COVID-19</string>
-    <string name="title_home">Home</string>
-    <string name="title_country">Country</string>
-    <string name="noInternet">No Internet</string>
-
     <array name="menuOptions">
         <item>Home</item>
         <item>Countries</item>
@@ -14,4 +8,10 @@
         <item>Corona Global Map</item>
         <item>About</item>
     </array>
+    <string name="app_name">COVID-19</string>
+    <string name="title_home">Home</string>
+    <string name="title_country">Country</string>
+    <string name="noInternet">No Internet</string>
+
+    <string name="hello_blank_fragment">This is the main fragment</string>
 </resources>
