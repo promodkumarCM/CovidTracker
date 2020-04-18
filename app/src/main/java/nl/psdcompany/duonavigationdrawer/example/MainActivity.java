@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements DuoMenuView.OnMen
 
     private void handleMenu() {
         mMenuAdapter = new MenuAdapter(mTitles);
-
+        //why babe
         mViewHolder.mDuoMenuView.setOnMenuClickListener(this);
         mViewHolder.mDuoMenuView.setBackground(R.drawable.nav_back);
         mViewHolder.mDuoMenuView.setAdapter(mMenuAdapter);
