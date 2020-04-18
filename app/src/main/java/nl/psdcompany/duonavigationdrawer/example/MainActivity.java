@@ -1,11 +1,16 @@
 package nl.psdcompany.duonavigationdrawer.example;
 
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import android.widget.Toast;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,6 +19,7 @@ import nl.psdcompany.duonavigationdrawer.example.Others.MapFragment;
 import nl.psdcompany.duonavigationdrawer.example.Others.PublicInformation;
 import nl.psdcompany.duonavigationdrawer.example.country.CountryFragment;
 import nl.psdcompany.duonavigationdrawer.example.home.HomeFragment;
+import nl.psdcompany.duonavigationdrawer.example.utils.BasilHelper;
 import nl.psdcompany.duonavigationdrawer.views.DuoDrawerLayout;
 import nl.psdcompany.duonavigationdrawer.views.DuoMenuView;
 import nl.psdcompany.duonavigationdrawer.widgets.DuoDrawerToggle;
@@ -62,6 +68,32 @@ public class MainActivity extends AppCompatActivity implements DuoMenuView.OnMen
                 R.string.navigation_drawer_close);
 
         mViewHolder.mDuoDrawerLayout.setDrawerListener(duoDrawerToggle);
+        mViewHolder.mDuoDrawerLayout.setDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+
+            }
+
+            @Override
+            public void onDrawerOpened(@NonNull View drawerView) {
+
+                 TextView tt = drawerView.findViewById(R.id.duo_view_header_text_title);
+                 tt.setText("COVID 19");
+
+            }
+
+            @Override
+            public void onDrawerClosed(@NonNull View drawerView) {
+                TextView tt = drawerView.findViewById(R.id.duo_view_header_text_title);
+                tt.setText("");
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+
+            }
+        });
+
         duoDrawerToggle.syncState();
 
     }
@@ -70,12 +102,14 @@ public class MainActivity extends AppCompatActivity implements DuoMenuView.OnMen
         mMenuAdapter = new MenuAdapter(mTitles);
 
         mViewHolder.mDuoMenuView.setOnMenuClickListener(this);
+        mViewHolder.mDuoMenuView.setBackground(R.drawable.nav_back);
         mViewHolder.mDuoMenuView.setAdapter(mMenuAdapter);
     }
 
     @Override
     public void onFooterClicked() {
         Toast.makeText(this, "Thanks Buddy", Toast.LENGTH_SHORT).show();
+        BasilHelper.Snackbar(MainActivity.this,getWindow().getDecorView().getRootView(),"Thanks Buddy !",R.color.colorBlack,R.color.white);
     }
 
     @Override
@@ -115,9 +149,9 @@ public class MainActivity extends AppCompatActivity implements DuoMenuView.OnMen
             case 3:
                 goToFragment(new MapFragment(), false);
                 break;
-                default:
-                    goToFragment(new HomeFragment(), false);
-                    break;
+            default:
+                goToFragment(new HomeFragment(), false);
+                break;
         }
 
         // Close the drawer
