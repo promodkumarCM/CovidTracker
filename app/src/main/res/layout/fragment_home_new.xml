@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshHome"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/ashwin3">
+
+                <RelativeLayout
+                    android:id="@+id/globe"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                   android:layout_centerInParent="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/circle_shape">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:src="@drawable/ic_world" />
+
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/globe"
+                    android:layout_marginTop="8dp"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="Coronavirus COVID-19\nGlobal Cases"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="24sp" />
+
+
+                <!--poda nari-->
+
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvLastUpdated"
+                    style="@style/LabelFontStyle"
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:visibility="gone"
+                    tools:text="Last Updated  Mon, 23 Mar 2020 1:20:30 PM" />
+
+                <TextView
+                    android:id="@+id/tvLabelTotalConfirmed"
+                    style="@style/LabelFontStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:text="Total Confirmed"
+                    android:textColor="@color/colorTotalConfirmed" />
+
+                <TextView
+                    android:id="@+id/tvTotalConfirmed"
+                    style="@style/TotalFontStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="@color/colorTotalConfirmed"
+                    tools:text="162387" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvLabelTotalDeaths"
+                            style="@style/LabelFontStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total Deaths"
+                            android:textColor="@color/colorTotalDeaths" />
+
+                        <TextView
+                            android:id="@+id/tvTotalDeaths"
+                            style="@style/TotalFontStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorTotalDeaths"
+                            tools:text="75648" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvLabelTotalRecovered"
+                            style="@style/LabelFontStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total Recovered"
+                            android:textColor="@color/colorTotalRecovered" />
+
+                        <TextView
+                            android:id="@+id/tvTotalRecovered"
+                            style="@style/TotalFontStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorTotalRecovered"
+                            tools:text="75938" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvLabelTimeUpdated"
+                    style="@style/LabelFontStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="time"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="#fff" />
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
+
+    <include layout="@layout/bottom_sheet" />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
