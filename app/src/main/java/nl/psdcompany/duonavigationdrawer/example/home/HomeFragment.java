@@ -31,10 +31,13 @@ import com.smarteist.autoimageslider.SliderView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class HomeFragment extends Fragment {
 
@@ -44,6 +47,7 @@ public class HomeFragment extends Fragment {
     private BottomSheetBehavior sheetBehavior;
     private FloatingActionButton fabOpenSheetBtn;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private SliderView sliderView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
