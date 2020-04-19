@@ -1,4 +1,4 @@
-package nl.psdcompany.duonavigationdrawer.example.home;
+package nl.psdcompany.duonavigationdrawer.corona.home;
 
 
 import android.os.Bundle;
@@ -35,7 +35,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import nl.psdcompany.duonavigationdrawer.example.R;
-import nl.psdcompany.duonavigationdrawer.example.utils.BasilHelper;
+import nl.psdcompany.duonavigationdrawer.corona.utils.BasilHelper;
 
 public class HomeFragment extends Fragment {
 
@@ -150,7 +150,7 @@ public class HomeFragment extends Fragment {
                     tvTotalDeaths.setText(dead);
                     tvTotalRecovered.setText(commaAdd(jsonObject.getString("recovered")));
                     tvLastUpdated.setText("Last Updated" + "\n" + getDate(jsonObject.getLong("updated")));
-                    tvLabelTimeUpdated.setText("Last updated on:\n" + milliSecToMinute(jsonObject.getString("updated")));
+                    tvLabelTimeUpdated.setText("Last updated on:\t" + milliSecToMinute(jsonObject.getString("updated")));
                 } catch (JSONException e) {
                     e.printStackTrace();
                     BasilHelper.hideProgress();
@@ -183,7 +183,7 @@ public class HomeFragment extends Fragment {
     }
 
     private String milliSecToMinute(String millisec) {
-        DateFormat formatter = new SimpleDateFormat("dd MMM yyyy \n HH:mm:ss");
+        DateFormat formatter = new SimpleDateFormat("dd MMM yyyy \t HH:mm:ss");
 
         long milliSeconds = Long.parseLong(millisec);
         System.out.println(milliSeconds);

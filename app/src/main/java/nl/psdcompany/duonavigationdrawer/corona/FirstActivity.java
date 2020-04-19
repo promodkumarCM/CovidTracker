@@ -1,9 +1,7 @@
-package nl.psdcompany.duonavigationdrawer.example;
+package nl.psdcompany.duonavigationdrawer.corona;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.shashank.sony.fancywalkthroughlib.FancyWalkthroughActivity;
@@ -12,14 +10,14 @@ import com.shashank.sony.fancywalkthroughlib.FancyWalkthroughCard;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.viewpager.widget.ViewPager;
+import nl.psdcompany.duonavigationdrawer.example.R;
 
 
 public class FirstActivity extends FancyWalkthroughActivity {
    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FancyWalkthroughCard fancywalkthroughCard1 = new FancyWalkthroughCard("Break The Chain", "Know the Ways of Spreading",R.drawable.test1);
+        FancyWalkthroughCard fancywalkthroughCard1 = new FancyWalkthroughCard("Break The Chain", "Know the Ways of Spreading", R.drawable.covid1);
         FancyWalkthroughCard fancywalkthroughCard2 = new FancyWalkthroughCard("Break The Chain", "Protect Yourself",R.drawable.covid2);
         FancyWalkthroughCard fancywalkthroughCard3 = new FancyWalkthroughCard("Break The Chain", "Keep Social Distancing",R.drawable.covid3);
         FancyWalkthroughCard fancywalkthroughCard4 = new FancyWalkthroughCard("Break The Chain", "Stop Spreading",R.drawable.covid4);

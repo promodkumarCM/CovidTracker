@@ -6,7 +6,7 @@
         <item>Countries</item>
         <item>Public Information Booklet</item>
         <item>Corona Global Map</item>
-        <item>About</item>
+        <item>WHO Public Advices</item>
     </array>
     <string name="app_name">COVID-19</string>
     <string name="title_home">Home</string>

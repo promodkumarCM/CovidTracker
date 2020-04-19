@@ -1,4 +1,4 @@
-package nl.psdcompany.duonavigationdrawer.example.country;
+package nl.psdcompany.duonavigationdrawer.corona.country;
 
 import android.content.Context;
 import android.util.Log;
@@ -11,12 +11,13 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import nl.psdcompany.duonavigationdrawer.corona.myinterface.OnRvClick;
 import nl.psdcompany.duonavigationdrawer.example.R;
-import nl.psdcompany.duonavigationdrawer.example.myinterface.OnRvClick;
 
 public class CovidCountryAdapter extends RecyclerView.Adapter<CovidCountryAdapter.ViewHolder> {
 
@@ -41,8 +42,6 @@ public class CovidCountryAdapter extends RecyclerView.Adapter<CovidCountryAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CountryApiModel covidCountry = covidCountries.get(position);
-
-
         holder.tvCountryName.setText(covidCountry.getTitle());
        /* holder.tvAffected.setText("Confirmed :"+covidCountry.getTotalCases());
         holder.tvDead.setText("Dead :"+covidCountry.getTotalDeaths());
@@ -50,11 +49,11 @@ public class CovidCountryAdapter extends RecyclerView.Adapter<CovidCountryAdapte
         holder.tvTodaysAffected.setText("New Cases : +"+covidCountry.getTotalNewCasesToday());
         holder.tvTodaysDeath.setText("New Death : +"+covidCountry.getTotalNewDeathsToday());*/
 
-        holder.tvAffected.setText(""+covidCountry.getTotalCases());
-        holder.tvDead.setText(""+covidCountry.getTotalDeaths());
-        holder.tvRecovered.setText(""+covidCountry.getTotalRecovered());
-        holder.tvTodaysAffected.setText("+"+covidCountry.getTotalNewCasesToday());
-        holder.tvTodaysDeath.setText("+"+covidCountry.getTotalNewDeathsToday());
+        holder.tvAffected.setText(""+commaAdd(covidCountry.getTotalCases().toString()));
+        holder.tvDead.setText(""+commaAdd(covidCountry.getTotalDeaths().toString()));
+        holder.tvRecovered.setText(""+commaAdd(covidCountry.getTotalRecovered().toString()));
+        holder.tvTodaysAffected.setText("+"+commaAdd(covidCountry.getTotalNewCasesToday().toString()));
+        holder.tvTodaysDeath.setText("+"+commaAdd(covidCountry.getTotalNewDeathsToday().toString()));
 
         try
         {
@@ -94,5 +93,14 @@ public class CovidCountryAdapter extends RecyclerView.Adapter<CovidCountryAdapte
                 }
             });
         }
+    }
+    private String commaAdd(String number) {
+
+
+        double amount = Double.parseDouble(number);
+        DecimalFormat formatter = new DecimalFormat("#,###");
+        String formatted = formatter.format(amount);
+
+        return formatted;
     }
 }

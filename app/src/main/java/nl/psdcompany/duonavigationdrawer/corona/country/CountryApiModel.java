@@ -1,4 +1,4 @@
-package nl.psdcompany.duonavigationdrawer.example.country;
+package nl.psdcompany.duonavigationdrawer.corona.country;
 
 
 import android.text.TextUtils;

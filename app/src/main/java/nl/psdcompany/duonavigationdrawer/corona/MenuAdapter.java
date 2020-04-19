@@ -1,4 +1,4 @@
-package nl.psdcompany.duonavigationdrawer.example;
+package nl.psdcompany.duonavigationdrawer.corona;
 
 import android.view.View;
 import android.view.ViewGroup;

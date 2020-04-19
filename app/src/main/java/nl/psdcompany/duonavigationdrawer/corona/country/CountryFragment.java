@@ -1,4 +1,4 @@
-package nl.psdcompany.duonavigationdrawer.example.country;
+package nl.psdcompany.duonavigationdrawer.corona.country;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -22,7 +22,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.material.internal.BaselineLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,9 +32,9 @@ import java.util.Collections;
 import java.util.Comparator;
 
 
+import nl.psdcompany.duonavigationdrawer.corona.myinterface.OnRvClick;
+import nl.psdcompany.duonavigationdrawer.corona.utils.BasilHelper;
 import nl.psdcompany.duonavigationdrawer.example.R;
-import nl.psdcompany.duonavigationdrawer.example.myinterface.OnRvClick;
-import nl.psdcompany.duonavigationdrawer.example.utils.BasilHelper;
 
 public class CountryFragment extends Fragment implements OnRvClick, SearchView.OnQueryTextListener {
 

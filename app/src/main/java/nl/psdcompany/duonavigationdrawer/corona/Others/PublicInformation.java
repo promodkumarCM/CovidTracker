@@ -1,9 +1,9 @@
-package nl.psdcompany.duonavigationdrawer.example.Others;
+package nl.psdcompany.duonavigationdrawer.corona.Others;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
-import nl.psdcompany.duonavigationdrawer.example.MainActivity;
+import nl.psdcompany.duonavigationdrawer.corona.MainActivity;
 import nl.psdcompany.duonavigationdrawer.example.R;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +15,6 @@ import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle;
 import com.shockwave.pdfium.PdfDocument;
 
 import java.util.List;
-
-import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 
 
 /**

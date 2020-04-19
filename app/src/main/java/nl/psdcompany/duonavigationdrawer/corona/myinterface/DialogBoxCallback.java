@@ -1,4 +1,4 @@
-package nl.psdcompany.duonavigationdrawer.example.myinterface;
+package nl.psdcompany.duonavigationdrawer.corona.myinterface;
 
 import android.content.DialogInterface;
 

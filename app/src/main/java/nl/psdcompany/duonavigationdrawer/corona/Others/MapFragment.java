@@ -1,4 +1,4 @@
-package nl.psdcompany.duonavigationdrawer.example.Others;
+package nl.psdcompany.duonavigationdrawer.corona.Others;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,11 +7,9 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
-
 import androidx.fragment.app.Fragment;
 import nl.psdcompany.duonavigationdrawer.example.R;
-import nl.psdcompany.duonavigationdrawer.example.utils.BasilHelper;
+import nl.psdcompany.duonavigationdrawer.corona.utils.BasilHelper;
 
 public class MapFragment extends Fragment {
 

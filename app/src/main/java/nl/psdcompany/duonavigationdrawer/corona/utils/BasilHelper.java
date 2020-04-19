@@ -1,4 +1,4 @@
-package nl.psdcompany.duonavigationdrawer.example.utils;
+package nl.psdcompany.duonavigationdrawer.corona.utils;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
