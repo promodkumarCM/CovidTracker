@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements DuoMenuView.OnMen
 
     @Override
     public void onFooterClicked() {
-//        Toast.makeText(this, "Thanks Buddy", Toast.LENGTH_SHORT).show();
+
         BasilHelper.Snackbar(MainActivity.this,getWindow().getDecorView().getRootView(),"Thanks Buddy !",R.color.colorBlack,R.color.white);
     }
 
