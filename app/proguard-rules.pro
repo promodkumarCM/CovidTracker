@@ -23,3 +23,24 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+#-keep class com.google.android.material.** { *; }
+#
+#-dontwarn com.google.android.material.**
+#-dontnote com.google.android.material.**
+#
+#-dontwarn androidx.**
+#-keep class androidx.** { *; }
+#-keep interface androix.** { *; }
+
+-keepattributes *Annotation*
+
+-keepclassmembers,allowshrinking,allowobfuscation class com.android.volley.NetworkDispatcher {
+    void processRequest();
+}
+-keepclassmembers,allowshrinking,allowobfuscation class com.android.volley.CacheDispatcher {
+    void processRequest();
+}
+
+
+
